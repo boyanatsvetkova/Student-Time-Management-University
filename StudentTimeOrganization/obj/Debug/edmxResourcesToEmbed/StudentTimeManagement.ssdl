@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectStudentTimeOrganizationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="Author_ID" />
+    </Key>
+    <Property Name="Author_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Author_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="News_ID" />
+    </Key>
+    <Property Name="News_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="News_Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="News_Content" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="News_Creation_Date" Type="datetime" Nullable="false" />
+    <Property Name="Author_ID" Type="int" Nullable="false" />
+    <Property Name="News_Data_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Notes">
+    <Key>
+      <PropertyRef Name="Note_ID" />
+    </Key>
+    <Property Name="Note_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Note_Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Task_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Priorities">
+    <Key>
+      <PropertyRef Name="Priority_Id" />
+    </Key>
+    <Property Name="Priority_Id" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Priority_Name" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReminderHours">
+    <Key>
+      <PropertyRef Name="Reminder_Hour_ID" />
+    </Key>
+    <Property Name="Reminder_Hour_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Reminder_Hour" Type="int" Nullable="false" />
+    <Property Name="Task_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="States">
+    <Key>
+      <PropertyRef Name="State_ID" />
+    </Key>
+    <Property Name="State_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="State_Name" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tasks">
+    <Key>
+      <PropertyRef Name="Task_Id" />
+    </Key>
+    <Property Name="Task_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Task_Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Task_Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Priority_ID" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="State_ID" Type="int" Nullable="false" />
+    <Property Name="Author_ID" Type="int" Nullable="false" />
+    <Property Name="Type_ID" Type="int" />
+    <Property Name="Creation_Date" Type="datetime" Nullable="false" />
+    <Property Name="Date_Day" Type="date" Nullable="false" />
+    <Property Name="Date_Time" Type="datetime" Nullable="false" />
+    <Property Name="Location_Name" Type="nvarchar" MaxLength="70" />
+    <Property Name="Data_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Types">
+    <Key>
+      <PropertyRef Name="Type_ID" />
+    </Key>
+    <Property Name="Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectStudentTimeOrganization.dbo.v_moodle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_moodle">
+    <Key>
+      <PropertyRef Name="FN" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="post_type" />
+      <PropertyRef Name="post_title" />
+      <PropertyRef Name="post_description" />
+      <PropertyRef Name="post_location" />
+    </Key>
+    <Property Name="FN" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="moodle_date" Type="date" />
+    <Property Name="post_type" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="post_title" Type="varchar" MaxLength="55" Nullable="false" />
+    <Property Name="post_description" Type="varchar" MaxLength="74" Nullable="false" />
+    <Property Name="post_location" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectStudentTimeOrganization.dbo.v_schedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_schedule">
+    <Key>
+      <PropertyRef Name="FN" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="post_type" />
+      <PropertyRef Name="post_title" />
+      <PropertyRef Name="post_description" />
+      <PropertyRef Name="post_location" />
+    </Key>
+    <Property Name="FN" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="schedule_date" Type="date" />
+    <Property Name="post_type" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="post_title" Type="nvarchar" MaxLength="74" Nullable="false" />
+    <Property Name="post_description" Type="nvarchar" MaxLength="74" Nullable="false" />
+    <Property Name="post_location" Type="nvarchar" MaxLength="14" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectStudentTimeOrganization.dbo.v_site' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_site">
+    <Key>
+      <PropertyRef Name="FN" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="post_type" />
+      <PropertyRef Name="post_title" />
+      <PropertyRef Name="post_description" />
+      <PropertyRef Name="post_location" />
+    </Key>
+    <Property Name="FN" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="site_date" Type="date" />
+    <Property Name="post_type" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="post_title" Type="varchar" MaxLength="156" Nullable="false" />
+    <Property Name="post_description" Type="varchar" MaxLength="535" Nullable="false" />
+    <Property Name="post_location" Type="varchar" MaxLength="4" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__tblNotes__Task_I__1FCDBCEB">
+    <End Role="Tasks" Type="Self.Tasks" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="Task_Id" />
+      </Principal>
+      <Dependent Role="Notes">
+        <PropertyRef Name="Task_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblRemind__Task___22AA2996">
+    <End Role="Tasks" Type="Self.Tasks" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ReminderHours" Type="Self.ReminderHours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="Task_Id" />
+      </Principal>
+      <Dependent Role="ReminderHours">
+        <PropertyRef Name="Task_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTasks__Author__1BFD2C07">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+    <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Author_ID" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="Author_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTasks__List_I__1CF15040">
+    <End Role="Types" Type="Self.Types" Multiplicity="0..1" />
+    <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="Type_ID" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTasks__Priori__1A14E395">
+    <End Role="Priorities" Type="Self.Priorities" Multiplicity="1" />
+    <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priorities">
+        <PropertyRef Name="Priority_Id" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="Priority_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTasks__State___1B0907CE">
+    <End Role="States" Type="Self.States" Multiplicity="1" />
+    <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="State_ID" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="State_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tblNews_Author_ID_FK">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Author_ID" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="Author_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectStudentTimeOrganizationModelStoreContainer">
+    <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Priorities" EntityType="Self.Priorities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReminderHours" EntityType="Self.ReminderHours" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Types" EntityType="Self.Types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="v_moodle" EntityType="Self.v_moodle" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[v_moodle].[FN] AS [FN], 
+[v_moodle].[id] AS [id], 
+[v_moodle].[moodle_date] AS [moodle_date], 
+[v_moodle].[post_type] AS [post_type], 
+[v_moodle].[post_title] AS [post_title], 
+[v_moodle].[post_description] AS [post_description], 
+[v_moodle].[post_location] AS [post_location]
+FROM [dbo].[v_moodle] AS [v_moodle]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_schedule" EntityType="Self.v_schedule" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[v_schedule].[FN] AS [FN], 
+[v_schedule].[id] AS [id], 
+[v_schedule].[schedule_date] AS [schedule_date], 
+[v_schedule].[post_type] AS [post_type], 
+[v_schedule].[post_title] AS [post_title], 
+[v_schedule].[post_description] AS [post_description], 
+[v_schedule].[post_location] AS [post_location]
+FROM [dbo].[v_schedule] AS [v_schedule]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_site" EntityType="Self.v_site" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[v_site].[FN] AS [FN], 
+[v_site].[id] AS [id], 
+[v_site].[site_date] AS [site_date], 
+[v_site].[post_type] AS [post_type], 
+[v_site].[post_title] AS [post_title], 
+[v_site].[post_description] AS [post_description], 
+[v_site].[post_location] AS [post_location]
+FROM [dbo].[v_site] AS [v_site]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__tblNotes__Task_I__1FCDBCEB" Association="Self.FK__tblNotes__Task_I__1FCDBCEB">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="Notes" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblRemind__Task___22AA2996" Association="Self.FK__tblRemind__Task___22AA2996">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="ReminderHours" EntitySet="ReminderHours" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTasks__Author__1BFD2C07" Association="Self.FK__tblTasks__Author__1BFD2C07">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTasks__List_I__1CF15040" Association="Self.FK__tblTasks__List_I__1CF15040">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTasks__Priori__1A14E395" Association="Self.FK__tblTasks__Priori__1A14E395">
+      <End Role="Priorities" EntitySet="Priorities" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTasks__State___1B0907CE" Association="Self.FK__tblTasks__State___1B0907CE">
+      <End Role="States" EntitySet="States" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="tblNews_Author_ID_FK" Association="Self.tblNews_Author_ID_FK">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

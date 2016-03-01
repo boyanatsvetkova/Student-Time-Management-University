@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectStudentTimeOrganizationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="Author_ID" />
+    </Key>
+    <Property Name="Author_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Author_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK__tblTasks__Author__1BFD2C07" FromRole="Authors" ToRole="Tasks" />
+    <NavigationProperty Name="News" Relationship="Self.tblNews_Author_ID_FK" FromRole="Authors" ToRole="News" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="News_ID" />
+    </Key>
+    <Property Name="News_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="News_Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="News_Content" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="News_Creation_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Author_ID" Type="Int32" Nullable="false" />
+    <Property Name="News_Data_id" Type="Int32" />
+    <NavigationProperty Name="Author" Relationship="Self.tblNews_Author_ID_FK" FromRole="News" ToRole="Authors" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="Note_ID" />
+    </Key>
+    <Property Name="Note_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Note_Content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Task_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Task" Relationship="Self.FK__tblNotes__Task_I__1FCDBCEB" FromRole="Notes" ToRole="Tasks" />
+  </EntityType>
+  <EntityType Name="Priority">
+    <Key>
+      <PropertyRef Name="Priority_Id" />
+    </Key>
+    <Property Name="Priority_Id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Priority_Name" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK__tblTasks__Priori__1A14E395" FromRole="Priorities" ToRole="Tasks" />
+  </EntityType>
+  <EntityType Name="ReminderHour">
+    <Key>
+      <PropertyRef Name="Reminder_Hour_ID" />
+    </Key>
+    <Property Name="Reminder_Hour_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Reminder_Hour" Type="Int32" Nullable="false" />
+    <Property Name="Task_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Task" Relationship="Self.FK__tblRemind__Task___22AA2996" FromRole="ReminderHours" ToRole="Tasks" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="State_ID" />
+    </Key>
+    <Property Name="State_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="State_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK__tblTasks__State___1B0907CE" FromRole="States" ToRole="Tasks" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="Task_Id" />
+    </Key>
+    <Property Name="Task_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Task_Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Task_Content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Priority_ID" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="State_ID" Type="Int32" Nullable="false" />
+    <Property Name="Author_ID" Type="Int32" Nullable="false" />
+    <Property Name="Type_ID" Type="Int32" />
+    <Property Name="Creation_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Date_Day" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Date_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Location_Name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="Data_id" Type="Int32" />
+    <NavigationProperty Name="Author" Relationship="Self.FK__tblTasks__Author__1BFD2C07" FromRole="Tasks" ToRole="Authors" />
+    <NavigationProperty Name="Notes" Relationship="Self.FK__tblNotes__Task_I__1FCDBCEB" FromRole="Tasks" ToRole="Notes" />
+    <NavigationProperty Name="Priority" Relationship="Self.FK__tblTasks__Priori__1A14E395" FromRole="Tasks" ToRole="Priorities" />
+    <NavigationProperty Name="ReminderHours" Relationship="Self.FK__tblRemind__Task___22AA2996" FromRole="Tasks" ToRole="ReminderHours" />
+    <NavigationProperty Name="State" Relationship="Self.FK__tblTasks__State___1B0907CE" FromRole="Tasks" ToRole="States" />
+    <NavigationProperty Name="Type" Relationship="Self.FK__tblTasks__List_I__1CF15040" FromRole="Tasks" ToRole="Types" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="Type_ID" />
+    </Key>
+    <Property Name="Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK__tblTasks__List_I__1CF15040" FromRole="Types" ToRole="Tasks" />
+  </EntityType>
+  <EntityType Name="v_moodle">
+    <Key>
+      <PropertyRef Name="FN" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="post_type" />
+      <PropertyRef Name="post_title" />
+      <PropertyRef Name="post_description" />
+      <PropertyRef Name="post_location" />
+    </Key>
+    <Property Name="FN" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="moodle_date" Type="DateTime" Precision="0" />
+    <Property Name="post_type" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="post_title" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="post_description" Type="String" MaxLength="74" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="post_location" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="v_schedule">
+    <Key>
+      <PropertyRef Name="FN" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="post_type" />
+      <PropertyRef Name="post_title" />
+      <PropertyRef Name="post_description" />
+      <PropertyRef Name="post_location" />
+    </Key>
+    <Property Name="FN" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="schedule_date" Type="DateTime" Precision="0" />
+    <Property Name="post_type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="post_title" Type="String" MaxLength="74" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="post_description" Type="String" MaxLength="74" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="post_location" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="v_site">
+    <Key>
+      <PropertyRef Name="FN" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="post_type" />
+      <PropertyRef Name="post_title" />
+      <PropertyRef Name="post_description" />
+      <PropertyRef Name="post_location" />
+    </Key>
+    <Property Name="FN" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="site_date" Type="DateTime" Precision="0" />
+    <Property Name="post_type" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="post_title" Type="String" MaxLength="156" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="post_description" Type="String" MaxLength="535" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="post_location" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__tblTasks__Author__1BFD2C07">
+    <End Role="Authors" Type="Self.Author" Multiplicity="1" />
+    <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Author_ID" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="Author_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tblNews_Author_ID_FK">
+    <End Role="Authors" Type="Self.Author" Multiplicity="1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Author_ID" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="Author_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblNotes__Task_I__1FCDBCEB">
+    <End Role="Tasks" Type="Self.Task" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Notes" Type="Self.Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="Task_Id" />
+      </Principal>
+      <Dependent Role="Notes">
+        <PropertyRef Name="Task_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTasks__Priori__1A14E395">
+    <End Role="Priorities" Type="Self.Priority" Multiplicity="1" />
+    <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priorities">
+        <PropertyRef Name="Priority_Id" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="Priority_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblRemind__Task___22AA2996">
+    <End Role="Tasks" Type="Self.Task" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ReminderHours" Type="Self.ReminderHour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="Task_Id" />
+      </Principal>
+      <Dependent Role="ReminderHours">
+        <PropertyRef Name="Task_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTasks__State___1B0907CE">
+    <End Role="States" Type="Self.State" Multiplicity="1" />
+    <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="State_ID" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="State_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTasks__List_I__1CF15040">
+    <End Role="Types" Type="Self.Type" Multiplicity="0..1" />
+    <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types">
+        <PropertyRef Name="Type_ID" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectStudentTimeOrganizationEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Authors" EntityType="Self.Author" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="Notes" EntityType="Self.Note" />
+    <EntitySet Name="Priorities" EntityType="Self.Priority" />
+    <EntitySet Name="ReminderHours" EntityType="Self.ReminderHour" />
+    <EntitySet Name="States" EntityType="Self.State" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tasks" EntityType="Self.Task" />
+    <EntitySet Name="Types" EntityType="Self.Type" />
+    <EntitySet Name="v_moodle" EntityType="Self.v_moodle" />
+    <EntitySet Name="v_schedule" EntityType="Self.v_schedule" />
+    <EntitySet Name="v_site" EntityType="Self.v_site" />
+    <AssociationSet Name="FK__tblTasks__Author__1BFD2C07" Association="Self.FK__tblTasks__Author__1BFD2C07">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="tblNews_Author_ID_FK" Association="Self.tblNews_Author_ID_FK">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblNotes__Task_I__1FCDBCEB" Association="Self.FK__tblNotes__Task_I__1FCDBCEB">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="Notes" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTasks__Priori__1A14E395" Association="Self.FK__tblTasks__Priori__1A14E395">
+      <End Role="Priorities" EntitySet="Priorities" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblRemind__Task___22AA2996" Association="Self.FK__tblRemind__Task___22AA2996">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="ReminderHours" EntitySet="ReminderHours" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTasks__State___1B0907CE" Association="Self.FK__tblTasks__State___1B0907CE">
+      <End Role="States" EntitySet="States" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTasks__List_I__1CF15040" Association="Self.FK__tblTasks__List_I__1CF15040">
+      <End Role="Types" EntitySet="Types" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

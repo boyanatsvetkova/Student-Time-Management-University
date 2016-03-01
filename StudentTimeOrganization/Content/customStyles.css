@@ -1,0 +1,39 @@
+﻿.disabled {
+    color: darkgray;
+}
+
+    .disabled:hover {
+        text-decoration: none;
+        cursor: default;
+        color: darkgray;
+    }
+
+.left-insert {
+    float: left;
+}
+
+.right-insert {
+    float: left;
+    margin:0 150px;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+insert-button{
+    margin:50px 0;
+}
+
+.block-label{
+    margin: 100px 0;
+}
+
+.news-title{
+    font-weight:bold;
+}

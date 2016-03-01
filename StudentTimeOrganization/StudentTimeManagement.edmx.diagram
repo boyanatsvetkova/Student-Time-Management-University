@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b8e2ac52f351441b9591cb13409ed975" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjectStudentTimeOrganizationModel.Author" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectStudentTimeOrganizationModel.News" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectStudentTimeOrganizationModel.Note" Width="1.5" PointX="8.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectStudentTimeOrganizationModel.Priority" Width="1.5" PointX="3.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectStudentTimeOrganizationModel.ReminderHour" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectStudentTimeOrganizationModel.State" Width="1.5" PointX="3.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectStudentTimeOrganizationModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectStudentTimeOrganizationModel.Task" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectStudentTimeOrganizationModel.Type" Width="1.5" PointX="3.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectStudentTimeOrganizationModel.v_moodle" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectStudentTimeOrganizationModel.v_schedule" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectStudentTimeOrganizationModel.v_site" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="ProjectStudentTimeOrganizationModel.FK__tblTasks__Author__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectStudentTimeOrganizationModel.tblNews_Author_ID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectStudentTimeOrganizationModel.FK__tblNotes__Task_I__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectStudentTimeOrganizationModel.FK__tblTasks__Priori__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectStudentTimeOrganizationModel.FK__tblRemind__Task___22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectStudentTimeOrganizationModel.FK__tblTasks__State___1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectStudentTimeOrganizationModel.FK__tblTasks__List_I__1CF15040" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
